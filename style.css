@@ -97,6 +97,7 @@ footer {
 
 .contato-form input,
 .contato-form textarea {
+    background-color: #FEFAE0;
     padding: 10px;
     border: 1px solid #f9ebc7;
     border-radius: 6px;
