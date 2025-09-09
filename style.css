@@ -28,7 +28,7 @@ header nav {
 
 header nav a {
     display: inline-block;
-    color: #C4661F;
+    color: #F9EBC7;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
@@ -38,8 +38,8 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: #C4661F;
-    color: #5f6f52;
+    background-color: #F9EBC7;
+    color: #C4661F;
 }
 
 /* Conteúdo principal */
