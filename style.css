@@ -48,16 +48,16 @@ main {
 }
 
 main h1 {
-    color: #0d47a1;
+    color: #5f6f52;
 }
 
 /* Rodapé */
 footer {
-    background-color: #eeeeee;
+    background-color: #FEFAE0;
     padding: 15px;
     margin-top: 30px;
     font-size: 0.9em;
-    color: #555;
+    color: #C4661F;
     box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
 
