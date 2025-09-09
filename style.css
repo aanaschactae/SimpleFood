@@ -92,13 +92,13 @@ footer {
 
 .contato-form label {
     font-weight: bold;
-    color: #0d47a1;
+    color: #C4661F;
 }
 
 .contato-form input,
 .contato-form textarea {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #f9ebc7;
     border-radius: 6px;
     font-size: 1em;
     width: 100%;
@@ -106,7 +106,7 @@ footer {
 }
 
 .contato-form button {
-    background: #0d47a1;
+    background:  #C4661F;
     color: white;
     padding: 10px;
     border: none;
@@ -117,5 +117,5 @@ footer {
 }
 
 .contato-form button:hover {
-    background: #1976d2;
+    background: #db7a30;
 }
