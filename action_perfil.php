@@ -36,7 +36,7 @@
 
                 // Exibe os outros campos que o aluno adicionar
                 foreach ($_POST as $campo => $valor) {
-                    if (!in_array($campo, ["nome", "email", "telefone", "data_nasc"])) {
+                    if (!in_array($campo, ["nome", "email", "gen", "telefone", "data_nasc"])) {
                         echo "<p><strong>" . ucfirst($campo) . ":</strong> " . htmlspecialchars($valor) . "</p>";
                     }
                 }
