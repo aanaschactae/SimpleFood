@@ -12,11 +12,11 @@
 
     <!-- Cabeçalho -->
     <header>
-        <h2>Locadora IFPR</h2>
+        <h2>SimpleFood</h2>
         <nav>
             <a href="index.html">Início</a>
             <a href="tabela.html">Tabela IMC</a>
-            <a href="pqsimpleplan.html">Por que SimplePlan?</a>
+            <a href="pqsimplefood.html">Por que SimplePlan?</a>
             <a href="perfil.html">Seu Perfil</a>
         </nav>
     </header>
@@ -36,7 +36,7 @@
 
                 // Exibe os outros campos que o aluno adicionar
                 foreach ($_POST as $campo => $valor) {
-                    if (!in_array($campo, ["nome", "email", "mensagem"])) {
+                    if (!in_array($campo, ["nome", "email", "telefone", "data_nasc"])) {
                         echo "<p><strong>" . ucfirst($campo) . ":</strong> " . htmlspecialchars($valor) . "</p>";
                     }
                 }
@@ -49,7 +49,7 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2025 Locadora IFPR - Todos os direitos reservados</p>
+        <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
     </footer>
 
 </body>
