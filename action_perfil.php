@@ -16,7 +16,7 @@
         <nav>
             <a href="index.html">Início</a>
             <a href="tabela.html">Tabela IMC</a>
-            <a href="pqsimplefood.html">Por que SimplePlan?</a>
+            <a href="pqsimpleplan.html">Por que SimplePlan?</a>
             <a href="perfil.html">Seu Perfil</a>
         </nav>
     </header>
