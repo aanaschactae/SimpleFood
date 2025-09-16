@@ -1,4 +1,4 @@
-/* Estilo geral */
+i/* Estilo geral */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -81,7 +81,7 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
-.contato-form {
+.perfil-form {
     max-width: 400px;
     margin: 20px auto;
     display: flex;
@@ -90,13 +90,13 @@ footer {
     text-align: left;
 }
 
-.contato-form label {
+.perfil-form label {
     font-weight: bold;
     color: #C4661F;
 }
 
-.contato-form input,
-.contato-form textarea {
+.perfil-form input,
+.perfil-form textarea {
     background-color: #FEFAE0;
     padding: 10px;
     border: 1px solid #f9ebc7;
@@ -106,7 +106,7 @@ footer {
     box-sizing: border-box;
 }
 
-.contato-form button {
+.perfil-form button {
     background:  #C4661F;
     color: white;
     padding: 10px;
@@ -117,6 +117,6 @@ footer {
     transition: background 0.3s;
 }
 
-.contato-form button:hover {
+.perfil-form button:hover {
     background: #db7a30;
 }
