@@ -22,33 +22,37 @@
 
     <!-- Conteúdo principal -->
     <main>
-        <h1>Oi, estamos felizes em te ouvir!</h1>
-        <form class="perfil-form" action="action_planilha" method="POST">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+    <h1>Oi, estamos felizes em te ouvir!</h1>
+    <form class="perfil-form" action="action_planilha">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu e-mail, example@gmail.com" required>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail, example@gmail.com" required>
 
-            <label>Genero:</label>
-            <input type="Genero"id="masc"name="gen"value="Masculino">
-            <label for= "masc≫"Masculino"</label>
-            <input type="Genero"id="fem"name="gen"value="Feminino">
-            <label for="fem≫"Feminino"</label>
-            <input type="Genero"id="other"name="gen"value="Outro">
-            <label for="other≫"Outro"</label>
-            <input type="Genero"id="non"name="sexo"value="Prefiro não Informar">
-            <label for="non≫"Prefiro não Informar"</label>
+        <label>Gênero:</label><br>
 
-            <label for="telefone">Telefone para Contato:</label>
-            <input type="telefone" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+        <input type="radio" id="masc" name="genero" value="Masculino">
+        <label for="masc">Masculino</label><br>
 
-            <label for="data">Data de nascimento:</label>
-            <input type="date" id="data_nasc" name="data_nasc">
+        <input type="radio" id="fem" name="genero" value="Feminino">
+        <label for="fem">Feminino</label><br>
 
-            <button type="submit">Enviar</button>
-        </form>
-    </main>
+        <input type="radio" id="outro" name="genero" value="Outro">
+        <label for="outro">Outro</label><br>
+
+        <input type="radio" id="nao_informar" name="genero" value="Prefiro não informar">
+        <label for="nao_informar">Prefiro não informar</label><br><br>
+
+        <label for="telefone">Telefone para Contato:</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+
+        <label for="data_nasc">Data de nascimento:</label>
+        <input type="date" id="data_nasc" name="data_nasc">
+
+        <button type="submit">Enviar</button>
+    </form>
+</main>
 
     <!-- Rodapé -->
     <footer>
