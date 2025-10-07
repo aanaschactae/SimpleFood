@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$url = "https://script.google.com/macros/s/SEU_SCRIPT_ID_AQUI/exec";
+$url = "//script.google.com/macros/s/AKfycbyfTAZzP_xcpmHvkaIlFn8IjTw9dhmxV-xXv2j0_sgXKAUZzkRbjZEIRfx7FQ4L2s33CQ/exec";
 
 $data = [
     "nome" => $_POST["nome"] ?? "",
