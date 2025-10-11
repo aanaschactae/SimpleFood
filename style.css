@@ -127,6 +127,7 @@ footer {
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 15px;
+    align-items: center;
 }
 
 .genero-group label {
