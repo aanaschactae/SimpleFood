@@ -130,8 +130,10 @@ footer {
     align-items: center;
     gap: 5px;
     min-width: 150px;
+    color: #C4661F;
+    font-weight: bold;
 }
 
 .genero-item input[type="radio"] {
-    accent-color: #C4661F;
+    accent-color: #F9EBC7;
 }
