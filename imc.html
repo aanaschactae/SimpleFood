@@ -119,6 +119,7 @@
             else classificacao = "Obesidade grau III (mórbida)";
 
             resultado.textContent = `Seu IMC é ${imc} (${classificacao}).`;
+            localStorage.setItem("imcUsuario", imc);
         }
     </script>
 
