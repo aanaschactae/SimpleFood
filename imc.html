@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular IMC - SimpleFood</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background-color: #E08E45;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d17836;
+        }
+
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 70%;
+            background-color: #F9EBC7;
+            color: #333;
+        }
+
+        th, td {
+            border: 1px solid #A9B388;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #A9B388;
+            color: #fff;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>SimpleFood</h2>
+        <nav>
+            <a href="index.html">Início</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Calculadora de IMC</h1>
+        <p>Insira seus dados para descobrir seu índice de massa corporal.</p>
+
+        <div>
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" placeholder="Ex: 60">
+
+            <label for="altura">Altura (m):</label>
+            <input type="number" id="altura" step="0.01" placeholder="Ex: 1.65">
+
+            <button onclick="calcularIMC()">Calcular</button>
+        </div>
+
+        <div id="resultado"></div>
+
+        <table>
+            <tr><th>Classificação</th><th>IMC</th></tr>
+            <tr><td>Magreza extrema</td><td>Menor que 16</td></tr>
+            <tr><td>Magreza</td><td>16 a 18.4</td></tr>
+            <tr><td>Peso normal</td><td>18.5 a 24.9</td></tr>
+            <tr><td>Sobrepeso</td><td>25 a 29.9</td></tr>
+            <tr><td>Obesidade grau I</td><td>30 a 34.9</td></tr>
+            <tr><td>Obesidade grau II</td><td>35 a 39.9</td></tr>
+            <tr><td>Obesidade grau III (mórbida)</td><td>40 ou mais</td></tr>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const resultado = document.getElementById('resultado');
+
+            if (!peso || !altura) {
+                resultado.textContent = "Por favor, insira peso e altura válidos.";
+                return;
+            }
+
+            const imc = (peso / (altura * altura)).toFixed(2);
+            let classificacao = "";
+
+            if (imc < 16) classificacao = "Magreza extrema";
+            else if (imc < 18.5) classificacao = "Magreza";
+            else if (imc < 25) classificacao = "Peso normal";
+            else if (imc < 30) classificacao = "Sobrepeso";
+            else if (imc < 35) classificacao = "Obesidade grau I";
+            else if (imc < 40) classificacao = "Obesidade grau II";
+            else classificacao = "Obesidade grau III (mórbida)";
+
+            resultado.textContent = `Seu IMC é ${imc} (${classificacao}).`;
+        }
+    </script>
+
+</body>
+</html>
