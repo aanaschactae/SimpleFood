@@ -150,30 +150,37 @@ footer {
   margin: 0 auto;
   background: #fae5af;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  color: #5f6f52; /* Cor padrão do texto */
+  color: #5f6f52;
 }
 
 .dados-planilha th {
   background-color: #5f6f52;
   text-align: left;
   padding: 10px;
-  color: #fae5af; /* Letras claras sobre fundo escuro */
+  color: #fae5af;
+}
+
+.dados-planilha td:nth-child(odd),
+.dados-planilha th:nth-child(odd) {
+  background-color: #fae5af; 
+  color: #5f6f52;
+}
+
+.dados-planilha td:nth-child(even),
+.dados-planilha th:nth-child(even) {
+  background-color: #C4661F;
+  color: #fff;
+}
+
+
+.dados-planilha tr:hover td {
+  background-color: #A9B388 !important;
+  color: #fff !important;
 }
 
 .dados-planilha td {
   padding: 8px 10px;
   border-bottom: 1px solid #a9b388;
-  color: #5f6f52; /* Cor do texto */
-}
-
-.dados-planilha tr:nth-child(even) {
-  background: #fae5af; /* Linhas pares com fundo claro */
-  color: #5f6f52; /* Texto escuro para contraste */
-}
-
-.dados-planilha tr:hover {
-  background: #A9B388; /* Cor de destaque no hover */
-  color: #fff; /* Texto branco quando passa o mouse (opcional para contraste) */
 }
 
 .info-msg {
