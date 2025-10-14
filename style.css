@@ -154,8 +154,7 @@ footer {
 }
 
 .dados-planilha th {
-  background: linear-gradient(90deg, #0d47a1, #1976d2);
-  color: #fff;
+  background-color: #5f6f52;
   text-align: left;
   padding: 10px;
 }
@@ -166,11 +165,11 @@ footer {
 }
 
 .dados-planilha tr:nth-child(even) {
-  background: #f9f9f9;
+  background: #F9EBC7;
 }
 
 .dados-planilha tr:hover {
-  background: #e3f2fd;
+  background: #fae8bb;
 }
 
 .info-msg {
