@@ -160,7 +160,7 @@ footer {
 
 .dados-planilha td {
   padding: 8px 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #a9b388;
 }
 
 .dados-planilha tr:nth-child(even) {
