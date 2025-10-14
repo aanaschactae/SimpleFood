@@ -148,7 +148,7 @@ footer {
   border-collapse: collapse;
   max-width: 900px;
   margin: 0 auto;
-  background: #f9ebc7;
+  background: #C4661F;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
@@ -156,6 +156,7 @@ footer {
   background-color: #5f6f52;
   text-align: left;
   padding: 10px;
+  color: #C4661F;
 }
 
 .dados-planilha td {
@@ -168,7 +169,7 @@ footer {
 }
 
 .dados-planilha tr:hover {
-  background: #C4661F;
+  background: #f9ebc7;
 }
 
 .info-msg {
