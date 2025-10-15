@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte seu Cardápio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #A9B388;
+            color: #F9EBC7;
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #5F6F52;
+            padding: 25px;
+            border-radius: 15px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #F9EBC7;
+            color: #5F6F52;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #D8CBA6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monte seu Cardápio Personalizado</h1>
+
+    <form id="formulario">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" min="1" required>
+
+        <label for="imc">IMC Calculado:</label>
+        <input type="text" id="imc" readonly>
+
+        <label for="restricoes">Restrições alimentares:</label>
+        <textarea id="restricoes" rows="3" placeholder="Ex: vegetariana, intolerância à lactose, sem glúten..."></textarea>
+
+        <label for="objetivo">Objetivo de alimentação:</label>
+        <select id="objetivo" required>
+            <option value="">Selecione</option>
+            <option value="saude">Melhorar a saúde</option>
+            <option value="energia">Ter mais energia</option>
+            <option value="ganho_massa">Ganho de massa</option>
+            <option value="manutencao">Manter o peso</option>
+            <option value="emagrecimento">Emagrecimento</option>
+        </select>
+
+        <button type="button" onclick="gerarCardapio()">Gerar Cardápio</button>
+    </form>
+
+    <script>
+        const imcSalvo = localStorage.getItem("imcUsuario")
+        if (imcSalvo) {
+            document.getElementById("imc").value = imcSalvo
+        }
+
+        function gerarCardapio() {
+            const nome = document.getElementById('nome').value
+            const objetivo = document.getElementById('objetivo').value
+            const restricoes = document.getElementById('restricoes').value
+
+            if (!nome || !objetivo) {
+                alert("Por favor, preencha seu nome e objetivo alimentar.")
+                return
+            }
+
+            localStorage.setItem("nomeUsuario", nome)
+            localStorage.setItem("objetivoUsuario", objetivo)
+            localStorage.setItem("restricoesUsuario", restricoes)
+
+            window.location.href = "cardapio.html"
+        }
+    </script>
+</body>
+</html>
