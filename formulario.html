@@ -80,26 +80,26 @@
     </form>
 
     <script>
-        const imcSalvo = localStorage.getItem("imcUsuario")
+        const imcSalvo = localStorage.getItem("imcUsuario");
         if (imcSalvo) {
-            document.getElementById("imc").value = imcSalvo
+            document.getElementById("imc").value = imcSalvo;
         }
 
         function gerarCardapio() {
-            const nome = document.getElementById('nome').value
-            const objetivo = document.getElementById('objetivo').value
-            const restricoes = document.getElementById('restricoes').value
+            const nome = document.getElementById('nome').value;
+            const objetivo = document.getElementById('objetivo').value;
+            const restricoes = document.getElementById('restricoes').value;
 
             if (!nome || !objetivo) {
-                alert("Por favor, preencha seu nome e objetivo alimentar.")
-                return
+                alert("Por favor, preencha seu nome e objetivo alimentar.");
+                return;
             }
 
-            localStorage.setItem("nomeUsuario", nome)
-            localStorage.setItem("objetivoUsuario", objetivo)
-            localStorage.setItem("restricoesUsuario", restricoes)
+            localStorage.setItem("nomeUsuario", nome);
+            localStorage.setItem("objetivoUsuario", objetivo);
+            localStorage.setItem("restricoesUsuario", restricoes);
 
-            window.location.href = "cardapio.html"
+            window.location.href = "cardapio.html";
         }
     </script>
 </body>
