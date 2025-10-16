@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Cardápio Personalizado</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #A9B388;
+            color: #F9EBC7;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cardapio {
+            background-color: #5F6F52;
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        h2, h3 {
+            color: #F9EBC7;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>SimpleFood</h2>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="monte-cardapio.html">Novo Cardápio</a>
+            <a href="imc.html">Recalcular IMC</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Seu Cardápio Personalizado 🍽️</h1>
+        <div class="info" id="infoUsuario"></div>
+        <div class="cardapio" id="cardapio"></div>
+    </main>
+
+    <script>
+        // Recuperar dados do localStorage
+        const nome = localStorage.getItem("nomeUsuario");
+        const objetivo = localStorage.getItem("objetivoUsuario");
+        const restricoes = (localStorage.getItem("restricoesUsuario") || "").toLowerCase();
+        const imc = parseFloat(localStorage.getItem("imcUsuario"));
+
+        const infoDiv = document.getElementById("infoUsuario");
+        const cardapioDiv = document.getElementById("cardapio");
+
+        // Verifica se os dados básicos estão preenchidos
+        if (!nome || !objetivo) {
+            infoDiv.innerHTML = "<p>Por favor, preencha o questionário antes de acessar o cardápio.</p>";
+        } else {
+            // Mostra informações do usuário
+            infoDiv.innerHTML = `
+                <h2>Olá, ${nome}!</h2>
+                <p><strong>IMC:</strong> ${imc || "não informado"}</p>
+                <p><strong>Objetivo:</strong> ${objetivo}</p>
+                <p><strong>Restrições:</strong> ${restricoes || "Nenhuma informada"}</p>
+            `;
+        }
+
+        // Função para gerar cardápio com base nos dados
+        function gerarCardapio(objetivo, restricoes, imc) {
+            let plano = "";
+
+            // --- Combinações específicas de objetivo + restrição ---
+            if (objetivo === "emagrecimento" && restricoes.includes("vegetariana")) {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Vitamina de banana com aveia e linhaça</p>
+                    <h3>Almoço</h3>
+                    <p>Tofu grelhado, arroz integral, legumes e salada verde</p>
+                    <h3>Jantar</h3>
+                    <p>Sopa de lentilha com cenoura e torradas integrais</p>
+                `;
+            } 
+            else if (objetivo === "emagrecimento" && restricoes.includes("lactose")) {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Leite vegetal com frutas e chia</p>
+                    <h3>Almoço</h3>
+                    <p>Frango grelhado, purê de batata-doce e legumes</p>
+                    <h3>Jantar</h3>
+                    <p>Caldo de abóbora com torradas sem lactose</p>
+                `;
+            } 
+            else if (objetivo === "ganho_massa" && restricoes.includes("vegetariana")) {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Pão integral com pasta de amendoim e suco natural</p>
+                    <h3>Almoço</h3>
+                    <p>Arroz, feijão, lentilha e ovos mexidos</p>
+                    <h3>Jantar</h3>
+                    <p>Macarrão integral com brócolis e queijo vegetal</p>
+                `;
+            }
+            else if (objetivo === "ganho_massa" && restricoes.includes("lactose")) {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Vitamina com leite vegetal, aveia e banana</p>
+                    <h3>Almoço</h3>
+                    <p>Carne magra, arroz integral, feijão e salada</p>
+                    <h3>Jantar</h3>
+                    <p>Omelete com legumes e torradas</p>
+                `;
+            }
+            else if (objetivo === "saude") {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Iogurte natural com frutas e granola</p>
+                    <h3>Almoço</h3>
+                    <p>Prato colorido com verduras, grãos e proteína leve</p>
+                    <h3>Jantar</h3>
+                    <p>Salada com mix de folhas e quinoa</p>
+                `;
+            }
+            else if (objetivo === "energia") {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Panqueca de aveia com mel e frutas</p>
+                    <h3>Almoço</h3>
+                    <p>Grãos, vegetais e castanhas</p>
+                    <h3>Lanche</h3>
+                    <p>Iogurte com granola e frutas secas</p>
+                `;
+            }
+            else if (objetivo === "manutencao") {
+                plano = `
+                    <h3>Café da manhã</h3>
+                    <p>Pão integral com queijo branco e café</p>
+                    <h3>Almoço</h3>
+                    <p>Arroz, feijão, legumes e proteína equilibrada</p>
+                    <h3>Jantar</h3>
+                    <p>Crepioca leve com suco natural</p>
+                `;
+            }
+
+            // --- Ajuste extra com base no IMC ---
+            if (imc < 18.5) {
+                plano += "<p><em>Seu IMC indica baixo peso. Recomendamos aumentar a ingestão de proteínas e calorias saudáveis.</em></p>";
+            } else if (imc >= 25) {
+                plano += "<p><em>Seu IMC indica sobrepeso. Prefira alimentos leves e ricos em fibras.</em></p>";
+            } else {
+                plano += "<p><em>Seu IMC está dentro da faixa ideal. Continue mantendo hábitos equilibrados!</em></p>";
+            }
+
+            return plano;
+        }
+
+        // Mostrar o cardápio
+        const cardapioGerado = gerarCardapio(objetivo, restricoes, imc);
+        cardapioDiv.innerHTML = cardapioGerado || "<p>Nenhum cardápio gerado. Verifique suas respostas.</p>";
+    </script>
+</body>
+</html>
