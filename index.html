@@ -9,64 +9,56 @@
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <h2>SimpleFood</h2>
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="pqsimplefood.html">Por que SimplePlan?</a>
-            <a href="perfil.html">Seu Perfil</a>
-            <a href="planilha.html">Planilha</a>
-        </nav>
-        <div id="tema-toggle" class="tema-toggle">
-  <div class="bolinha"></div>
-    </header>
 
-    <!-- Conteúdo principal -->
-    <main>
-        <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
-        <p>Alimentação que se adapta a você.</p>
+<header>
+    <h2>SimpleFood</h2>
 
-        <div class="menu">
-            <!-- Calcular IMC -->
-            <a href="imc.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/1.png?updatedAt=1757426830585"
-                    alt="Calcular IMC">
-            </a>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="pqsimplefood.html">Por que SimplePlan?</a>
+        <a href="perfil.html">Seu Perfil</a>
+        <a href="planilha.html">Planilha</a>
+    </nav>
 
-            <!-- Montar Cardápio -->
-            <a href="monte-cardapio.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/2.png?updatedAt=1757426830631"
-                    alt="Montar Cardápio">
-            </a>
+    <div id="tema-toggle" class="tema-toggle">
+        <div class="bolinha"></div>
+    </div>
+</header>
 
-            <!-- Ver Cardápio -->
-            <a href="cardapio.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/3.png?updatedAt=1757426830397"
-                    alt="Seu Cardápio">
-            </a>
-        </div>
-    </main>
+<main>
+    <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
+    <p>Alimentação que se adapta a você.</p>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
-    </footer>
+    <div class="menu">
+        <a href="imc.html" target="_blank">
+            <img src="https://ik.imagekit.io/anaschactae/1.png?updatedAt=1757426830585" alt="Calcular IMC">
+        </a>
+        <a href="monte-cardapio.html" target="_blank">
+            <img src="https://ik.imagekit.io/anaschactae/2.png?updatedAt=1757426830631" alt="Montar Cardápio">
+        </a>
+        <a href="cardapio.html" target="_blank">
+            <img src="https://ik.imagekit.io/anaschactae/3.png?updatedAt=1757426830397" alt="Seu Cardápio">
+        </a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
+</footer>
+
 <script>
   const toggle = document.getElementById("tema-toggle");
   const body = document.body;
 
-  // Carregar tema salvo
   let tema = localStorage.getItem("tema") || "tema-claro";
   if (tema === "tema-escuro") body.classList.add("tema-escuro");
 
   toggle.addEventListener("click", () => {
     body.classList.toggle("tema-escuro");
-
     const ativo = body.classList.contains("tema-escuro");
     localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
   });
 </script>
-</body>
 
+</body>
 </html>
