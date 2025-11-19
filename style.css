@@ -13,6 +13,7 @@ header {
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative; /* NECESSÁRIO PARA MOSTRAR O BOTÃO */
 }
 
 header h2 {
@@ -186,6 +187,7 @@ footer {
   padding: 10px;
   color: #5f6f52;
 }
+
 /* ---------- Botão Toggle ---------- */
 .tema-toggle {
   position: absolute;
@@ -200,6 +202,7 @@ footer {
   display: flex;
   align-items: center;
   transition: background 0.25s;
+  z-index: 9999; /* GARANTE QUE APARECE SOBRE TUDO */
 }
 
 .tema-toggle .bolinha {
