@@ -187,6 +187,30 @@ footer {
   color: #5f6f52;
 }
 /* ---------- Botão Toggle ---------- */
+.tema-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 50px;
+  height: 26px;
+  background: #c4661f;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: background 0.25s;
+}
+
+.tema-toggle .bolinha {
+  width: 20px;
+  height: 20px;
+  background: #f9ebc7;
+  border-radius: 50%;
+  transition: transform 0.25s, background 0.25s;
+}
+
+/* ---------- TEMA ESCURO ---------- */
 .tema-escuro {
   background-color: #1d2416;
   color: #f9ebc7;
@@ -199,19 +223,6 @@ footer {
 
 .tema-escuro footer {
   background-color: #3d4633;
-  color: #f9ebc7;
-}
-
-.tema-escuro header nav a {
-  color: #f9ebc7;
-}
-
-.tema-escuro header nav a:hover {
-  background-color: #f9ebc7;
-  color: #c4661f;
-}
-
-.tema-escuro main h1 {
   color: #f9ebc7;
 }
 
@@ -229,80 +240,11 @@ footer {
   color: #fae5af;
 }
 
-.tema-escuro .menu img {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-.tema-escuro .menu img:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.8);
-}
-
-.tema-escuro .perfil-form label {
-  color: #fae5af;
-}
-
-.tema-escuro .perfil-form input,
-.tema-escuro .perfil-form textarea {
-  background-color: #2f3727;
-  border: 1px solid #5f6f52;
-  color: #f9ebc7;
-}
-
-.tema-escuro .perfil-form button {
-  background-color: #c4661f;
-  color: #f9ebc7;
-}
-
-.tema-escuro .perfil-form button:hover {
-  background: #db7a30;
-}
-
-.tema-escuro .genero-item {
-  color: #fae5af;
-}
-
-.tema-escuro .genero-item input[type="radio"] {
-  accent-color: #c4661f;
-}
-
-.tema-escuro .dados-planilha {
-  background: #2b3223;
-  color: #f9ebc7;
-}
-
-.tema-escuro .dados-planilha th {
-  background-color: #3d4633;
-  color: #fae5af;
-}
-
-.tema-escuro .dados-planilha td {
-  border-bottom: 1px solid #5f6f52;
-  color: #f9ebc7;
-}
-
-.tema-escuro .dados-planilha tr:nth-child(odd) {
-  background: #2b3223;
-  color: #f9ebc7;
-}
-
-.tema-escuro .dados-planilha tr:nth-child(even) {
-  background: #6b8556;
-  color: #fff;
-}
-
-.tema-escuro .dados-planilha tr:hover {
-  background: #5f6f52;
-  color: #fff;
-}
-
-.tema-escuro .info-msg {
-  color: #fae5af;
-}
-
 .tema-escuro .tema-toggle {
   background: #5f6f52;
 }
 
 .tema-escuro .tema-toggle .bolinha {
   transform: translateX(24px);
+  background: #fae5af;
 }
