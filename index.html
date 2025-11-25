@@ -1,61 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Cardápio Acessível</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-    <h2>SimpleFood</h2>
-
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="pqsimplefood.html">Por que SimplePlan?</a>
-        <a href="perfil.html">Seu Perfil</a>
-        <a href="planilha.html">Planilha</a>
-    </nav>
-
-    <div id="tema-toggle" class="tema-toggle">
-        <div class="bolinha"></div>
-    </div>
-</header>
-
-<main>
-    <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
-    <p>Alimentação que se adapta a você.</p>
-
-    <div id="conteudo" class="conteudo-scroll">
-        <p>Carregando conteúdo...</p>
-    </div>
-</main>
-
-<footer>
-    <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
-</footer>
-
 <script>
-  /* ------------------ TEMA ESCURO / CLARO ------------------ */
-  const toggle = document.getElementById("tema-toggle");
-  const body = document.body;
-
-  let tema = localStorage.getItem("tema") || "tema-claro";
-  if (tema === "tema-escuro") body.classList.add("tema-escuro");
-
-  toggle.addEventListener("click", () => {
-    body.classList.toggle("tema-escuro");
-    const ativo = body.classList.contains("tema-escuro");
-    localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
-  });
-
-
-
-  /* ------------------ CARREGAMENTO DINÂMICO ------------------ */
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyA3nWQmvAzu4hiPsYnz0WQoAvXHzCrtRPgWNkieOwS8NIWhOcS-TC7955Ow4TrFMDNAw/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvQKAEG4MBQ6vt6texWnom_qwEzspPl2GKE5jxdk3fp8q2JQLXtKnBpa-uYgk1d_7DCA/exec";
 
   async function carregarConteudo() {
     const container = document.getElementById('conteudo');
@@ -80,21 +24,20 @@
         descricao.textContent = item.Descrição || '';
         bloco.appendChild(descricao);
 
-        // ---- TRATAMENTO DO FORMATO DESTINO|URL_DA_IMAGEM ----
-        if (item.Url && item.Url.includes("|")) {
-            const partes = item.Url.split("|");
-            const linkDestino = partes[0];
-            const imagemUrl = partes[1];
+        // link + imagem separadamente
+        if (item.Destino) {
+          const link = document.createElement('a');
+          link.href = item.Destino;
+          link.target = "_blank";
+          link.textContent = "Acessar conteúdo";
+          bloco.appendChild(link);
+        }
 
-            const link = document.createElement('a');
-            link.href = linkDestino;
-
-            const img = document.createElement('img');
-            img.src = imagemUrl;
-            img.alt = item.Título || 'Imagem';
-
-            link.appendChild(img);
-            bloco.appendChild(link);
+        if (item.Imagem) {
+          const img = document.createElement('img');
+          img.src = item.Imagem;
+          img.alt = item.Título || 'Imagem';
+          bloco.appendChild(img);
         }
 
         container.appendChild(bloco);
@@ -107,6 +50,3 @@
 
   carregarConteudo();
 </script>
-
-</body>
-</html>
