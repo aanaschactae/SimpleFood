@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seu Cardápio Acessível</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            max-height: 450px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .menu img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform .2s;
+        }
+
+        .menu img:hover {
+            transform: scale(1.06);
+        }
+    </style>
 </head>
 
 <body>
@@ -27,18 +51,8 @@
         <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
         <p>Alimentação que se adapta a você.</p>
 
-        <div class="menu">
-            <a href="imc.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/1.png?updatedAt=1757426830585" alt="Calcular IMC">
-            </a>
-
-            <a href="monte-cardapio.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/2.png?updatedAt=1757426830631" alt="Montar Cardápio">
-            </a>
-
-            <a href="cardapio.html" target="_blank">
-                <img src="https://ik.imagekit.io/anaschactae/3.png?updatedAt=1757426830397" alt="Seu Cardápio">
-            </a>
+        <div class="menu" id="menu">
+            Carregando ícones...
         </div>
     </main>
 
@@ -47,9 +61,39 @@
     </footer>
 
     <script>
+        const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbw33TfI-35qaC5PR2vBsu-up3PgGTMQukoiOL8ZJgMy8Yvk-RNXLuNWFHXjbgZGzDCxMw/exec";
+
+        async function carregarMenu() {
+            const menu = document.getElementById("menu");
+
+            try {
+                const req = await fetch(URL_SCRIPT);
+                const itens = await req.json();
+
+                menu.innerHTML = "";
+
+                itens.forEach(item => {
+                    const link = document.createElement("a");
+                    link.href = item.link;
+                    link.target = "_blank";
+
+                    const img = document.createElement("img");
+                    img.src = item.icone;
+                    img.alt = item.titulo;
+
+                    link.appendChild(img);
+                    menu.appendChild(link);
+                });
+
+            } catch (e) {
+                menu.innerHTML = "Erro ao carregar itens da planilha.";
+            }
+        }
+
+        carregarMenu();
+
         const toggle = document.getElementById("tema-toggle");
         const body = document.body;
-
         let tema = localStorage.getItem("tema") || "tema-claro";
 
         if (tema === "tema-escuro") {
@@ -58,9 +102,9 @@
 
         toggle.addEventListener("click", () => {
             body.classList.toggle("tema-escuro");
-
-            const ativo = body.classList.contains("tema-escuro");
-            localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
+            localStorage.setItem("tema",
+                body.classList.contains("tema-escuro") ? "tema-escuro" : "tema-claro"
+            );
         });
     </script>
 </body>
