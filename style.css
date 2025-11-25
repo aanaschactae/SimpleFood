@@ -206,64 +206,72 @@ footer {
     color: #5f6f52;
 }
 
+/* ====== CORREÇÃO IMPORTANTE DO HEADER ====== */
+header {
+    position: relative; /* <-- sem isso o botão desaparece */
+    z-index: 10;
+}
+
+/* ---------- Botão Toggle ---------- */
 .tema-toggle {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    width: 50px;
-    height: 26px;
-    background: #c4661f;
-    border-radius: 20px;
-    cursor: pointer;
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    transition: background 0.25s;
-    z-index: 9999;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 50px;
+  height: 26px;
+  background: #c4661f;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: background 0.25s;
+  z-index: 9999; /* garante que fica na frente */
 }
 
 .tema-toggle .bolinha {
-    width: 20px;
-    height: 20px;
-    background: #f9ebc7;
-    border-radius: 50%;
-    transition: transform 0.25s, background 0.25s;
+  width: 20px;
+  height: 20px;
+  background: #f9ebc7;
+  border-radius: 50%;
+  transition: transform 0.25s, background 0.25s;
 }
 
+/* ---------- TEMA ESCURO ---------- */
 .tema-escuro {
-    background-color: #1d2416;
-    color: #f9ebc7;
+  background-color: #1d2416;
+  color: #f9ebc7;
 }
 
 .tema-escuro header {
-    background: linear-gradient(135deg, #3d4633, #4a5a3e);
-    color: #f9ebc7;
+  background: linear-gradient(135deg, #3d4633, #4a5a3e);
+  color: #f9ebc7;
 }
 
 .tema-escuro footer {
-    background-color: #3d4633;
-    color: #f9ebc7;
+  background-color: #3d4633;
+  color: #f9ebc7;
 }
 
 .tema-escuro .conteudo-scroll {
-    background: #2b3223;
-    border-color: #5f6f52;
+  background: #2b3223;
+  border-color: #5f6f52;
 }
 
 .tema-escuro .bloco-item {
-    border-color: #6b8556;
-    background-color: #1f2619;
+  border-color: #6b8556;
+  background-color: #1f2619;
 }
 
 .tema-escuro .bloco-item h2 {
-    color: #fae5af;
+  color: #fae5af;
 }
 
 .tema-escuro .tema-toggle {
-    background: #5f6f52;
+  background: #5f6f52;
 }
 
 .tema-escuro .tema-toggle .bolinha {
-    transform: translateX(24px);
-    background: #fae5af;
+  transform: translateX(24px);
+  background: #fae5af;
 }
