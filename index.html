@@ -1,52 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .item img {
+            max-width: 180px;
+            border-radius: 5px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Conteúdos</h1>
+
+<div class="container" id="container"></div>
+<p class="error" id="erro"></p>
+
 <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvQKAEG4MBQ6vt6texWnom_qwEzspPl2GKE5jxdk3fp8q2JQLXtKnBpa-uYgk1d_7DCA/exec";
+    async function carregarDados() {
+        const url = "https://script.google.com/macros/s/AKfycbzvQKAEG4MBQ6vt6texWnom_qwEzspPl2GKE5jxdk3fp8q2JQLXtKnBpa-uYgk1d_7DCA/exec";
 
-  async function carregarConteudo() {
-    const container = document.getElementById('conteudo');
-    container.innerHTML = "<p>Carregando conteúdo...</p>";
+        try {
+            const resposta = await fetch(url);
+            const json = await resposta.json();
 
-    try {
-      const res = await fetch(SCRIPT_URL);
-      const dados = await res.json();
-      container.innerHTML = '';
+            if (!json.dados || !Array.isArray(json.dados)) {
+                document.getElementById("erro").textContent =
+                    "Erro: os dados recebidos não estão em formato de lista.";
+                return;
+            }
 
-      dados.forEach(item => {
-        const bloco = document.createElement('div');
-        bloco.className = 'bloco-item';
+            const container = document.getElementById("container");
+            container.innerHTML = "";
 
-        // título
-        const titulo = document.createElement('h2');
-        titulo.textContent = item.Título || '';
-        bloco.appendChild(titulo);
+            json.dados.forEach((linha, index) => {
+                // impede erros com linhas vazias ou curtas
+                if (!linha || linha.length < 2) return;
 
-        // descrição
-        const descricao = document.createElement('p');
-        descricao.textContent = item.Descrição || '';
-        bloco.appendChild(descricao);
+                const link = linha[0] || "";
+                const imagem = linha[1] || "";
 
-        // link + imagem separadamente
-        if (item.Destino) {
-          const link = document.createElement('a');
-          link.href = item.Destino;
-          link.target = "_blank";
-          link.textContent = "Acessar conteúdo";
-          bloco.appendChild(link);
+                const item = document.createElement("div");
+                item.className = "item";
+
+                item.innerHTML = `
+                    <p><strong>Link:</strong> <a href="${link}" target="_blank">${link}</a></p>
+                    <img src="${imagem}" alt="Imagem do item">
+                `;
+
+                container.appendChild(item);
+            });
+
+        } catch (erro) {
+            document.getElementById("erro").textContent =
+                "Erro ao carregar dados: " + erro;
         }
-
-        if (item.Imagem) {
-          const img = document.createElement('img');
-          img.src = item.Imagem;
-          img.alt = item.Título || 'Imagem';
-          bloco.appendChild(img);
-        }
-
-        container.appendChild(bloco);
-      });
-
-    } catch (err) {
-      container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
     }
-  }
 
-  carregarConteudo();
+    carregarDados();
 </script>
+
+</body>
+</html>
