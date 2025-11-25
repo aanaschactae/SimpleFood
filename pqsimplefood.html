@@ -49,7 +49,19 @@
     <footer>
         <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
     </footer>
+<script>
+  const toggle = document.getElementById("tema-toggle");
+  const body = document.body;
 
+  let tema = localStorage.getItem("tema") || "tema-claro";
+  if (tema === "tema-escuro") body.classList.add("tema-escuro");
+
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("tema-escuro");
+    const ativo = body.classList.contains("tema-escuro");
+    localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
+  });
+</script>
 </body>
 
 </html>
