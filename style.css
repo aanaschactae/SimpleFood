@@ -14,6 +14,7 @@ header {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     position: relative;
+    z-index: 10;
 }
 
 header h2 {
@@ -85,10 +86,8 @@ footer {
     align-items: center;
 }
 
-/* ======= ÍCONES AUMENTADOS ======= */
 .menu img {
-    width: 300px;
-    max-width: 90%;
+    width: 230px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -208,10 +207,7 @@ footer {
     color: #5f6f52;
 }
 
-header {
-    position: relative;
-    z-index: 10;
-}
+/* ----- Toggle do Tema ----- */
 
 .tema-toggle {
     position: absolute;
@@ -236,6 +232,8 @@ header {
     border-radius: 50%;
     transition: transform 0.25s, background 0.25s;
 }
+
+/* ----- Tema escuro ----- */
 
 .tema-escuro {
     background-color: #1d2416;
