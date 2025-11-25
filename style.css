@@ -272,38 +272,3 @@ footer {
     transform: translateX(24px);
     background: #fae5af;
 }
-/* ===== TAMANHO E CENTRALIZAÇÃO DOS ÍCONES ===== */
-
-.menu a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.menu img {
-    width: 260px;        /* Aumente aqui se quiser maior */
-    max-width: 90%;
-    border-radius: 16px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.menu img:hover {
-    transform: scale(1.07);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
-}
-
-/* ===== VÍDEO COM FORMATAÇÃO ===== */
-
-.menu iframe {
-    width: 80%;
-    max-width: 700px;  /* aumenta ou diminui */
-    height: 390px;     /* proporção tipo YouTube */
-    margin-top: 20px;
-    border-radius: 12px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
-}
