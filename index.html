@@ -29,16 +29,8 @@
     <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
     <p>Alimentação que se adapta a você.</p>
 
-    <div class="menu">
-        <a href="imc.html" target="_blank">
-            <img src="https://ik.imagekit.io/anaschactae/1.png?updatedAt=1757426830585" alt="Calcular IMC">
-        </a>
-        <a href="monte-cardapio.html" target="_blank">
-            <img src="https://ik.imagekit.io/anaschactae/2.png?updatedAt=1757426830631" alt="Montar Cardápio">
-        </a>
-        <a href="cardapio.html" target="_blank">
-            <img src="https://ik.imagekit.io/anaschactae/3.png?updatedAt=1757426830397" alt="Seu Cardápio">
-        </a>
+    <div id="conteudo" class="conteudo-scroll">
+        <p>Carregando conteúdo...</p>
     </div>
 </main>
 
@@ -47,6 +39,7 @@
 </footer>
 
 <script>
+  /* ------------------ TEMA ESCURO / CLARO ------------------ */
   const toggle = document.getElementById("tema-toggle");
   const body = document.body;
 
@@ -58,6 +51,61 @@
     const ativo = body.classList.contains("tema-escuro");
     localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
   });
+
+
+
+  /* ------------------ CARREGAMENTO DINÂMICO ------------------ */
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZnty-e5c05A1RcX2IM2YhGDyWSihcTzy-DHL7za_lpMnWvoDLwdxwbJe7ugLt96-fBA/exec";
+
+  async function carregarConteudo() {
+    const container = document.getElementById('conteudo');
+    container.innerHTML = "<p>Carregando conteúdo...</p>";
+
+    try {
+      const res = await fetch(SCRIPT_URL);
+      const dados = await res.json();
+      container.innerHTML = '';
+
+      dados.forEach(item => {
+        const bloco = document.createElement('div');
+        bloco.className = 'bloco-item';
+
+        // título
+        const titulo = document.createElement('h2');
+        titulo.textContent = item.Título || '';
+        bloco.appendChild(titulo);
+
+        // descrição
+        const descricao = document.createElement('p');
+        descricao.textContent = item.Descrição || '';
+        bloco.appendChild(descricao);
+
+        // ---- TRATAMENTO DO FORMATO DESTINO|URL_DA_IMAGEM ----
+        if (item.Url && item.Url.includes("|")) {
+            const partes = item.Url.split("|");
+            const linkDestino = partes[0];
+            const imagemUrl = partes[1];
+
+            const link = document.createElement('a');
+            link.href = linkDestino;
+
+            const img = document.createElement('img');
+            img.src = imagemUrl;
+            img.alt = item.Título || 'Imagem';
+
+            link.appendChild(img);
+            bloco.appendChild(link);
+        }
+
+        container.appendChild(bloco);
+      });
+
+    } catch (err) {
+      container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
+    }
+  }
+
+  carregarConteudo();
 </script>
 
 </body>
