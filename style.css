@@ -14,6 +14,7 @@ header {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     position: relative;
+    z-index: 10;
 }
 
 header h2 {
@@ -59,6 +60,7 @@ footer {
     box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
 }
 
+/* MENU DE ÍCONES */
 .menu {
     display: flex;
     flex-direction: column;
@@ -97,6 +99,7 @@ footer {
     box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
+/* FORMULÁRIO */
 .perfil-form {
     max-width: 400px;
     margin: 20px auto;
@@ -156,6 +159,7 @@ footer {
     accent-color: #C4661F;
 }
 
+/* TABELA */
 .table-wrap {
     max-width: 100%;
     overflow-x: auto;
@@ -187,7 +191,6 @@ footer {
 
 .dados-planilha tr:nth-child(odd) {
     background: #fae5af;
-    color: #5f6f52;
 }
 
 .dados-planilha tr:nth-child(even) {
@@ -206,10 +209,20 @@ footer {
     color: #5f6f52;
 }
 
-/* ====== CORREÇÃO IMPORTANTE DO HEADER ====== */
-header {
-    position: relative; /* <-- sem isso o botão desaparece */
-    z-index: 10;
+/* ----------- VÍDEO FORMATADO ----------- */
+.video-container {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.video-container iframe {
+    width: 80%;
+    max-width: 850px;
+    height: 480px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
 }
 
 /* ---------- Botão Toggle ---------- */
@@ -226,7 +239,7 @@ header {
   display: flex;
   align-items: center;
   transition: background 0.25s;
-  z-index: 9999; /* garante que fica na frente */
+  z-index: 9999;
 }
 
 .tema-toggle .bolinha {
@@ -245,26 +258,11 @@ header {
 
 .tema-escuro header {
   background: linear-gradient(135deg, #3d4633, #4a5a3e);
-  color: #f9ebc7;
 }
 
 .tema-escuro footer {
   background-color: #3d4633;
   color: #f9ebc7;
-}
-
-.tema-escuro .conteudo-scroll {
-  background: #2b3223;
-  border-color: #5f6f52;
-}
-
-.tema-escuro .bloco-item {
-  border-color: #6b8556;
-  background-color: #1f2619;
-}
-
-.tema-escuro .bloco-item h2 {
-  color: #fae5af;
 }
 
 .tema-escuro .tema-toggle {
