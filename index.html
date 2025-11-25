@@ -1,100 +1,67 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conteúdos</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .item {
-            background: white;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .item img {
-            max-width: 180px;
-            border-radius: 5px;
-            display: block;
-            margin-top: 10px;
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
+    <title>Seu Cardápio Acessível</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <header>
+        <h2>SimpleFood</h2>
 
-<h1>Conteúdos</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="pqsimplefood.html">Por que SimplePlan?</a>
+            <a href="perfil.html">Seu Perfil</a>
+            <a href="planilha.html">Planilha</a>
+        </nav>
 
-<div class="container" id="container"></div>
-<p class="error" id="erro"></p>
+        <div id="tema-toggle" class="tema-toggle">
+            <div class="bolinha"></div>
+        </div>
+    </header>
 
-<script>
-    async function carregarDados() {
-        const url = "https://script.google.com/macros/s/AKfycbzvQKAEG4MBQ6vt6texWnom_qwEzspPl2GKE5jxdk3fp8q2JQLXtKnBpa-uYgk1d_7DCA/exec";
+    <main>
+        <h1>Bem-vindo ao seu laboratório de nutrição acessível!</h1>
+        <p>Alimentação que se adapta a você.</p>
 
-        try {
-            const resposta = await fetch(url);
-            const json = await resposta.json();
+        <div class="menu">
+            <a href="imc.html" target="_blank">
+                <img src="https://ik.imagekit.io/anaschactae/1.png?updatedAt=1757426830585" alt="Calcular IMC">
+            </a>
 
-            if (!json.dados || !Array.isArray(json.dados)) {
-                document.getElementById("erro").textContent =
-                    "Erro: os dados recebidos não estão em formato de lista.";
-                return;
-            }
+            <a href="monte-cardapio.html" target="_blank">
+                <img src="https://ik.imagekit.io/anaschactae/2.png?updatedAt=1757426830631" alt="Montar Cardápio">
+            </a>
 
-            const container = document.getElementById("container");
-            container.innerHTML = "";
+            <a href="cardapio.html" target="_blank">
+                <img src="https://ik.imagekit.io/anaschactae/3.png?updatedAt=1757426830397" alt="Seu Cardápio">
+            </a>
+        </div>
+    </main>
 
-            json.dados.forEach((linha, index) => {
-                // impede erros com linhas vazias ou curtas
-                if (!linha || linha.length < 2) return;
+    <footer>
+        <p>&copy; 2025 SimpleFood - Todos os direitos reservados</p>
+    </footer>
 
-                const link = linha[0] || "";
-                const imagem = linha[1] || "";
+    <script>
+        const toggle = document.getElementById("tema-toggle");
+        const body = document.body;
 
-                const item = document.createElement("div");
-                item.className = "item";
+        let tema = localStorage.getItem("tema") || "tema-claro";
 
-                item.innerHTML = `
-                    <p><strong>Link:</strong> <a href="${link}" target="_blank">${link}</a></p>
-                    <img src="${imagem}" alt="Imagem do item">
-                `;
-
-                container.appendChild(item);
-            });
-
-        } catch (erro) {
-            document.getElementById("erro").textContent =
-                "Erro ao carregar dados: " + erro;
+        if (tema === "tema-escuro") {
+            body.classList.add("tema-escuro");
         }
-    }
 
-    carregarDados();
-</script>
+        toggle.addEventListener("click", () => {
+            body.classList.toggle("tema-escuro");
 
+            const ativo = body.classList.contains("tema-escuro");
+            localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
+        });
+    </script>
 </body>
 </html>
